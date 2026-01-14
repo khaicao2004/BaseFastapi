@@ -1,7 +1,9 @@
 fastapi
 uvicorn
-pydantic
+pydantic==1.9.1
 sqlalchemy 
 alembic 
 pymysql 
 python-dotenv
+# pydantic-settings
+fastapi-sqlalchemy

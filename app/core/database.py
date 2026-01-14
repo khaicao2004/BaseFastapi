@@ -7,12 +7,8 @@ engine = create_engine(configs.DATABASE_URI, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def get_db() -> Generator:
-    db = SessionLocal()
     try:
+        db = SessionLocal()
         yield db
-        db.commit()
-    except:
-        db.rollback()
-        raise
     finally:
         db.close()
