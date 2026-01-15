@@ -8,7 +8,7 @@ class Configs(BaseSettings):
     # base
     APP_ENV: str = os.getenv("APP_ENV", "dev")
     APP_NAME: str = os.getenv("APP_NAME")
-    API: str = "/api"
+    API_PREFIX: str = "/api"
     API_V1_STR: str = "/v1"
     APP_ROOT: str = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     DB_NAME_MAPPER: dict = {
