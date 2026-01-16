@@ -3,13 +3,16 @@ from app.schemas.user_schema import UserCreate, UserUpdate
 from app.models.user import User
 from app.core.database import get_db
 from sqlalchemy.orm import Session
+from typing import Any
+from app.schemas.base_schema import DataResponse
+from app.models.user import UserResponse
 
 router = APIRouter()
 
-@router.get("/")
+@router.get("/", response_model=DataResponse[UserResponse])
 def get_users(db: Session = Depends(get_db)):
     users = db.query(User).all()
-    return users
+    return DataResponse().success_response(data=users)
 
 @router.get("/{user_id}")
 def get_user(user_id: int, db: Session = Depends(get_db)):
